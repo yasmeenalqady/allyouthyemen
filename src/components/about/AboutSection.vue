@@ -13,23 +13,9 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 md:px-8 relative">
-      <!-- عنوان القسم مع تأثير كتابي -->
-      <div class="text-center mb-16">
-        <span class="inline-block text-sm font-light tracking-[0.3em] text-gray-400 mb-3">{{ t('since') }} 2010</span>
-        <h2 
-          class="text-4xl md:text-5xl font-light mb-6 relative inline-block"
-          :style="{ color: 'var(--primary-color)' }"
-        >
-          {{ t('aboutUs') }}
-          <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-1">
-            <span class="w-2 h-2 rounded-full" :style="{ background: 'var(--primary-color)' }"></span>
-            <span class="w-2 h-2 rounded-full" :style="{ background: 'var(--warning-color)' }"></span>
-            <span class="w-2 h-2 rounded-full" :style="{ background: 'var(--primary-color)' }"></span>
-          </div>
-        </h2>
-      </div>
 
-      <!-- الصورة والنص الوصفي بشكل أكثر حداثة -->
+
+      <!-- الصورة والنص الوصفي -->
       <div class="grid lg:grid-cols-2 gap-16 items-center mb-32">
         <div class="relative group perspective">
           <div class="relative transform-gpu transition-transform duration-700 group-hover:rotate-y-3">
@@ -70,11 +56,12 @@
         </div>
       </div>
 
-      <!-- الرسالة والرؤية مع تأثير بطاقات زجاجية -->
+      <!-- الرسالة والرؤية مع تأثير بطاقات زجاجية - تم تعديل الخلفيات -->
       <div class="grid md:grid-cols-2 gap-8 mb-32">
-        <!-- كارد المهمة -->
+        <!-- كارد المهمة (خلفية بلون أساسي شفاف) #f4a03a -->
         <div 
-          class="service-card group p-8 rounded-asymmetric bg-white/80 backdrop-blur-sm border border-gray-100 shadow-lg transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:border-primary-200"
+          class="service-card group p-8 rounded-asymmetric backdrop-blur-sm border border-gray-100 shadow-lg transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:border-primary-200"
+          :style="{ backgroundColor: 'rgba(244, 160, 58, 0.05)' }"
         >
           <div class="flex items-center gap-4 mb-4">
             <div class="w-14 h-14 rounded-asymmetric bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -90,9 +77,10 @@
           <div class="mt-6 w-12 h-1 rounded-full bg-gradient-to-r from-primary-400 to-transparent group-hover:w-20 transition-all"></div>
         </div>
 
-        <!-- كارد الرؤية -->
+        <!-- كارد الرؤية (خلفية بلون تحذيري شفاف) #135e69 -->
         <div 
-          class="service-card group p-8 rounded-asymmetric bg-white/80 backdrop-blur-sm border border-gray-100 shadow-lg transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:border-warning-200"
+          class="service-card group p-8 rounded-asymmetric backdrop-blur-sm border border-gray-100 shadow-lg transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:border-warning-200"
+          :style="{ backgroundColor: 'rgba(19, 94, 105, 0.05)' }"
         >
           <div class="flex items-center gap-4 mb-4">
             <div class="w-14 h-14 rounded-asymmetric bg-gradient-to-br from-warning-100 to-warning-50 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -109,7 +97,7 @@
         </div>
       </div>
 
-      <!-- الأهداف بشكل بطاقات أنيقة -->
+      <!-- الأهداف -->
       <div class="mb-32">
         <h3 class="text-3xl font-light mb-16 text-center relative">
           <span :style="{ color: 'var(--primary-color)' }">{{ t('ourGoals') }}</span>
@@ -140,7 +128,7 @@
         </div>
       </div>
 
-      <!-- إحصائيات مع عدادات -->
+      <!-- إحصائيات -->
       <div class="relative py-20 px-8 rounded-asymmetric bg-gradient-to-br from-gray-50 to-white shadow-inner mb-16">
         <div class="absolute inset-0 bg-grid-pattern opacity-5 rounded-asymmetric"></div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8 relative">
@@ -173,8 +161,8 @@ const i18n = inject('i18n', {
 
 const t = (key) => i18n.t(key)
 
-const primaryLight = computed(() => 'rgba(59, 130, 246, 0.15)') // أزرق فاتح
-const warningLight = computed(() => 'rgba(245, 158, 11, 0.15)') // برتقالي فاتح
+const primaryLight = computed(() => 'rgba(59, 130, 246, 0.15)')
+const warningLight = computed(() => 'rgba(245, 158, 11, 0.15)')
 
 const stats = [
   { number: '10K+', label: 'beneficiaries' },
@@ -191,7 +179,6 @@ const goals = [
 </script>
 
 <style scoped>
-/* الحواف غير المتماثلة */
 .rounded-asymmetric {
   border-top-right-radius: 2.5rem;
   border-bottom-left-radius: 2.5rem;
@@ -199,12 +186,10 @@ const goals = [
   border-bottom-right-radius: 0;
 }
 
-/* تأثيرات البطاقات */
 .service-card {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* خلفية شبكية */
 .bg-grid-pattern {
   background-image: 
     linear-gradient(to right, #e5e7eb 1px, transparent 1px),
@@ -212,7 +197,6 @@ const goals = [
   background-size: 30px 30px;
 }
 
-/* تأثيرات الحركة للخلفية */
 @keyframes blob {
   0% { transform: translate(0px, 0px) scale(1); }
   33% { transform: translate(30px, -50px) scale(1.1); }
@@ -226,7 +210,6 @@ const goals = [
   animation-delay: 2s;
 }
 
-/* تأثير الدوران للصورة */
 .perspective {
   perspective: 1000px;
 }
@@ -237,7 +220,6 @@ const goals = [
   transition: transform 0.7s ease;
 }
 
-/* تحسين RTL */
 [dir="rtl"] .pl-16 {
   padding-left: 0;
   padding-right: 4rem;

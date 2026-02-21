@@ -2,8 +2,25 @@
   <section class="py-20" :style="{ backgroundColor: '#f9fafb' }">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
 
-      <!-- أزرار الفلتر -->
-      <div class="flex flex-wrap justify-center gap-3 mb-12">
+      <!-- فلتر الجوال (Dropdown) -->
+      <div class="md:hidden mb-10">
+        <select
+          v-model="selectedCategory"
+          class="w-full px-4 py-3 bg-white border border-gray-200 rounded-asymmetric text-sm focus:outline-none"
+          :style="{ borderColor: 'var(--primary-color)' }"
+        >
+          <option
+            v-for="category in categories"
+            :key="category.value"
+            :value="category.value"
+          >
+            {{ t(category.label) }}
+          </option>
+        </select>
+      </div>
+
+      <!-- فلتر الديسكتوب (أزرار) -->
+      <div class="hidden md:flex flex-wrap justify-center gap-3 mb-12">
         <button
           v-for="category in categories"
           :key="category.value"
@@ -28,13 +45,15 @@
         >
           <div class="relative h-48 overflow-hidden">
             <img
-              :src="`https://picsum.photos/seed/${project.imageSeed}/400/300`"
+              :src="project.image"
               :alt="t(project.titleKey)"
-              class="w-full h-full object-cover opacity-80 transition-transform duration-500 hover:scale-110 program-img"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110 program-img"
             />
             <div class="absolute inset-0 flex items-end p-4">
               <div class="bg-gradient-to-t from-black/60 to-transparent w-full h-full absolute top-0 left-0 rounded-tr-3xl rounded-bl-3xl"></div>
-              <span class="relative text-white text-lg font-bold">{{ t(project.categoryKey) }}</span>
+              <span class="relative text-white text-lg font-bold">
+                {{ t(project.categoryKey) }}
+              </span>
             </div>
           </div>
           <div class="p-6">
@@ -52,7 +71,7 @@
             >
               {{ t('learnMore') }}
               <i
-                class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"
+                class="fas fa-arrow-right transition-transform"
                 :class="[i18n.isRTL ? 'mr-2 rotate-180' : 'ml-2']"
               ></i>
             </button>
@@ -64,6 +83,7 @@
       <div v-else class="text-center py-12">
         <p class="text-gray-500">{{ t('noProjects') }}</p>
       </div>
+
     </div>
   </section>
 </template>
@@ -75,9 +95,9 @@ const i18n = inject('i18n', {
   t: (key) => key,
   isRTL: false
 })
+
 const t = (key) => i18n.t(key)
 
-// قائمة الفئات (للفلتر)
 const categories = [
   { value: 'all', label: 'all' },
   { value: 'poverty', label: 'fightPoverty' },
@@ -87,10 +107,8 @@ const categories = [
   { value: 'emergency', label: 'emergency' }
 ]
 
-// الفئة المختارة حالياً
 const selectedCategory = ref('all')
 
-// بيانات جميع المشاريع
 const allProjects = [
   {
     id: 1,
@@ -98,7 +116,7 @@ const allProjects = [
     category: 'poverty',
     categoryKey: 'fightPoverty',
     descKey: 'povertyDesc',
-    imageSeed: 'poverty'
+    image: 'http://allyouthyemen.org/wp-content/uploads/2025/11/IMG_3700.jpg'
   },
   {
     id: 2,
@@ -106,7 +124,7 @@ const allProjects = [
     category: 'family',
     categoryKey: 'familySupport',
     descKey: 'familyDesc',
-    imageSeed: 'family'
+    image: 'http://allyouthyemen.org/wp-content/uploads/2025/11/IMG_0213-scaled.jpg'
   },
   {
     id: 3,
@@ -114,15 +132,15 @@ const allProjects = [
     category: 'education',
     categoryKey: 'education',
     descKey: 'educationDesc',
-    imageSeed: 'education'
+    image: 'http://allyouthyemen.org/wp-content/uploads/2025/11/IMG_0756-scaled.jpg'
   },
   {
     id: 4,
-    titleKey: 'healthPrograms', // سنضيفها في الترجمة
+    titleKey: 'healthPrograms',
     category: 'health',
     categoryKey: 'health',
-    descKey: 'healthDesc', // موجودة مسبقاً
-    imageSeed: 'health'
+    descKey: 'healthDesc',
+    image: 'http://allyouthyemen.org/wp-content/uploads/2025/11/DSC06599-scaled.jpg'
   },
   {
     id: 5,
@@ -130,7 +148,7 @@ const allProjects = [
     category: 'emergency',
     categoryKey: 'emergency',
     descKey: 'emergencyDesc',
-    imageSeed: 'emergency'
+    image: 'http://allyouthyemen.org/wp-content/uploads/2025/11/SANY0153.jpg'
   },
   {
     id: 6,
@@ -138,11 +156,10 @@ const allProjects = [
     category: 'poverty',
     categoryKey: 'fightPoverty',
     descKey: 'waterDesc',
-    imageSeed: 'water'
+    image: 'http://allyouthyemen.org/wp-content/uploads/2025/11/DSC06575-scaled.jpg'
   }
 ]
 
-// المشاريع المفلترة
 const filteredProjects = computed(() => {
   if (selectedCategory.value === 'all') return allProjects
   return allProjects.filter(p => p.category === selectedCategory.value)
@@ -166,14 +183,5 @@ const filteredProjects = computed(() => {
   border-bottom-left-radius: 1rem;
   border-top-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-
-/* حركة hover للأسهم */
-.group:hover .fa-arrow-right {
-  transform: translateX(0.5rem);
-}
-
-html[dir="rtl"] .group:hover .fa-arrow-right {
-  transform: translateX(-0.5rem) rotate(180deg);
 }
 </style>

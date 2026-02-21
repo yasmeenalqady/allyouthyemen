@@ -6,9 +6,9 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="flex justify-between items-center py-4">
         
-        <!-- Logo with image -->
+        <!-- Logo with image (مكبرة أكثر) -->
         <RouterLink to="/" class="flex items-center">
-          <img :src="logoSrc" alt="GAINLOVE" class="h-10 w-auto" />
+          <img :src="logoSrc" alt="GAINLOVE" class="h-14 w-auto object-contain" />
         </RouterLink>
 
         <!-- Desktop Menu -->
@@ -122,7 +122,7 @@
 <script setup>
 import { ref, inject } from 'vue'
 import { RouterLink } from 'vue-router'
-import logoSrc from '@/assets/images/logo.png' // استيراد الصورة
+import logoSrc from '@/assets/images/logo.png'
 
 const { t, toggleLanguage, currentLang, isRTL } = inject('i18n')
 defineEmits(['open-donate'])

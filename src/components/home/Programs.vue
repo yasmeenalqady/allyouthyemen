@@ -13,21 +13,22 @@
 
       <!-- شبكة البطاقات -->
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <!-- البطاقة الأولى -->
+        <!-- البطاقة الأولى - محاربة الفقر -->
         <div
           class="program-card bg-white shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll hover:-translate-y-2"
         >
-          <div class="relative h-48 overflow-hidden">
+          <div class="relative h-48 overflow-hidden rounded-asymmetric">
             <img
-              src="https://picsum.photos/seed/poverty/400/300"
+              src="http://allyouthyemen.org/wp-content/uploads/2025/11/IMG_3700.jpg"
               alt="Fight Poverty"
-              class="w-full h-full object-cover opacity-80 transition-transform duration-500 hover:scale-110 program-img"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
             />
-            <div
-              class="absolute inset-0 flex items-end p-4"
-            >
-              <div class="bg-gradient-to-t from-black/60 to-transparent w-full h-full absolute top-0 left-0 rounded-tr-3xl rounded-bl-3xl"></div>
-              <span class="relative text-white text-lg font-bold">{{ t('fightPoverty') }}</span>
+            <!-- طبقة داكنة شفافة فوق الصورة -->
+            <div class="absolute inset-0 bg-black/40"></div>
+            <!-- تدرج شفاف من الأسفل للنص -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+            <div class="absolute inset-0 flex items-end p-4">
+              <span class="relative text-white text-lg font-bold z-10">{{ t('fightPoverty') }}</span>
             </div>
           </div>
           <div class="p-6">
@@ -52,19 +53,22 @@
           </div>
         </div>
 
-        <!-- البطاقة الثانية -->
+        <!-- البطاقة الثانية - دعم الأسرة -->
         <div
           class="program-card bg-white shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll hover:-translate-y-2"
         >
-          <div class="relative h-48 overflow-hidden">
+          <div class="relative h-48 overflow-hidden rounded-asymmetric">
             <img
-              src="https://picsum.photos/seed/family/400/300"
+              src="http://allyouthyemen.org/wp-content/uploads/2025/11/IMG_0213-scaled.jpg"
               alt="Family Support"
-              class="w-full h-full object-cover opacity-80 transition-transform duration-500 hover:scale-110 program-img"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
             />
+            <!-- طبقة داكنة شفافة فوق الصورة -->
+            <div class="absolute inset-0 bg-black/40"></div>
+            <!-- تدرج شفاف من الأسفل للنص -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
             <div class="absolute inset-0 flex items-end p-4">
-              <div class="bg-gradient-to-t from-black/60 to-transparent w-full h-full absolute top-0 left-0 rounded-tr-3xl rounded-bl-3xl"></div>
-              <span class="relative text-white text-lg font-bold">{{ t('familySupport') }}</span>
+              <span class="relative text-white text-lg font-bold z-10">{{ t('familySupport') }}</span>
             </div>
           </div>
           <div class="p-6">
@@ -89,19 +93,22 @@
           </div>
         </div>
 
-        <!-- البطاقة الثالثة -->
+        <!-- البطاقة الثالثة - التعليم -->
         <div
           class="program-card bg-white shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll hover:-translate-y-2"
         >
-          <div class="relative h-48 overflow-hidden">
+          <div class="relative h-48 overflow-hidden rounded-asymmetric">
             <img
-              src="https://picsum.photos/seed/education/400/300"
+              src="http://allyouthyemen.org/wp-content/uploads/2025/11/IMG_0756-scaled.jpg"
               alt="Teen Education"
-              class="w-full h-full object-cover opacity-80 transition-transform duration-500 hover:scale-110 program-img"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
             />
+            <!-- طبقة داكنة شفافة فوق الصورة -->
+            <div class="absolute inset-0 bg-black/40"></div>
+            <!-- تدرج شفاف من الأسفل للنص -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
             <div class="absolute inset-0 flex items-end p-4">
-              <div class="bg-gradient-to-t from-black/60 to-transparent w-full h-full absolute top-0 left-0 rounded-tr-3xl rounded-bl-3xl"></div>
-              <span class="relative text-white text-lg font-bold">{{ t('education') }}</span>
+              <span class="relative text-white text-lg font-bold z-10">{{ t('education') }}</span>
             </div>
           </div>
           <div class="p-6">
@@ -127,7 +134,7 @@
         </div>
       </div>
 
-      <!-- زر عرض كل المشاريع -->
+      <!-- زر عرض كل البرامج -->
       <div class="text-center">
         <button
           class="btn-asymmetric px-8 py-3 text-base font-semibold inline-flex items-center transition-all duration-300 shadow-sm hover:shadow-md hover-scale"
@@ -181,13 +188,15 @@ onMounted(() => {
   opacity: 1 !important;
   transform: none !important;
   visibility: visible !important;
-  border-top-right-radius: 1.5rem;   /* أكبر حواف */
+  border-top-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
 }
 
-.program-img {
+.rounded-asymmetric {
   border-top-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 /* حركة fade-in عند scroll */

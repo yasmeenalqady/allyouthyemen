@@ -3,14 +3,10 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="grid md:grid-cols-4 gap-8">
         <div>
-          <div class="text-2xl font-bold mb-6 flex items-center">
-            <i
-              class="fas fa-heart mr-2"
-              :class="{ 'ml-2 mr-0': isRTL }"
-              :style="{ color: 'var(--secondary-color)' }"
-            ></i>
-            GAINLOVE
-          </div>
+          <!-- صورة الشعار مع فلتر أبيض وتكبير -->
+          <RouterLink to="/" class="flex items-center mb-6">
+            <img :src="logoSrc" alt="GAINLOVE" class="h-16 w-auto brightness-0 invert" />
+          </RouterLink>
           <p class="text-gray-400 text-sm mb-6">{{ t('footerDesc') }}</p>
           <div class="flex space-x-4" :class="{ 'space-x-reverse': isRTL }">
             <a
@@ -127,6 +123,8 @@
 
 <script setup>
 import { inject } from 'vue'
+import { RouterLink } from 'vue-router'
+import logoSrc from '@/assets/images/logo.png'
 
 const { t, isRTL } = inject('i18n')
 defineEmits(['open-donate'])
