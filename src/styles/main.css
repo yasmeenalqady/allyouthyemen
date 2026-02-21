@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+:root {
+  --primary-color: #135e69;
+  --primary-hover-color: #0e4a52;
+  --secondary-color: #f4a03a;
+  --secondary-hover-color: #f7b55a;
+  --txcolor: #0f172a;
+  --green-txtcolor: #3a8356;
+  --warning-txtcolor: #9c7930;
+  --red-txtcolor: #b55355;
+  --green-color: #15a448;
+  --warning-color: #e9b306;
+  --red-color: #dd2727;
+}
+
+.formal {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--txcolor);
+}
+
+.font-cairo {
+  font-family: 'Cairo', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--txcolor);
+}
+
+.nav-link { position: relative; }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 0;
+}
+
+.btn-asymmetric {
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: none;
+}
+
+[dir="rtl"] .btn-asymmetric {
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.hero-section { 
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4,0,0.2,1); transition-duration: 700ms; }
+
+/* أنيميشن الشركاء */
+@keyframes scroll-ltr {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-rtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+.animate-scroll {
+  display: flex;
+  width: fit-content;
+  animation: scroll-ltr 30s linear infinite;
+}
+
+[dir="rtl"] .animate-scroll {
+  animation: scroll-rtl 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* باقي الأنماط */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+input:focus, select:focus, textarea:focus {
+  --tw-ring-color: var(--primary-color);
+  ring-color: var(--primary-color);
+}
+
+html { scroll-behavior: smooth; }
+h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.2; }
+button, .btn-asymmetric { text-transform: none; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeInUp 0.8s ease-out; }
+.slide-in { animation: fadeInUp 0.8s ease-out 0.2s both; }
+.fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+.animate-on-scroll { opacity: 0; }
