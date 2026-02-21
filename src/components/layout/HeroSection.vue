@@ -7,8 +7,8 @@
     <!-- صورة الخلفية مع طبقة شفافة -->
     <div class="absolute inset-0 z-0">
       <img
-        src="https://picsum.photos/1920/1080?random=1"
-        alt="Hero background"
+        :src="bgImage"
+        :alt="`${title} background`"
         class="w-full h-full object-cover opacity-30"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
@@ -54,7 +54,7 @@ const t = (key) => i18n.t(key)
 
 const router = useRouter()
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true
@@ -66,6 +66,10 @@ defineProps({
   currentPage: {
     type: String,
     required: true
+  },
+  bgImage: {
+    type: String,
+    default: 'http://allyouthyemen.org/wp-content/uploads/2025/11/IMG_3700.jpg'
   }
 })
 
